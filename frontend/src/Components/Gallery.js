@@ -64,10 +64,12 @@ export default function Gallery() {
       headers: {"Content-Type": "application/json"}
     });
     const data = await response.json();
+    console.log(data);
    setHamsters([...hamsters, data])
-   console.log(data);
+   handleClick();
   }
-  
+  const handleClick = () => {  setName('');}
+
   useEffect(() => {
     hamster();
   }, []);
@@ -77,7 +79,7 @@ export default function Gallery() {
     <div>
       <Link to="/"><button>Home</button></Link>
       <h1 className="gallery-h1">Hamsters Gallery</h1>
-      <form onSubmit={()=>addHamster()} className="gallery-field">
+      <form onSubmit={(e)=>{addHamster(); e.preventDefault();}} className="gallery-field">
       <fieldset>
         <legend>Add new hamster</legend>
         <label>
@@ -85,7 +87,7 @@ export default function Gallery() {
           </label>
           
           <label>
-          <input type="number" placeholder="Age" onChange={(e) => setAge(e.target.value)}/>
+          <input  type="number" placeholder="Age" onChange={(e) => setAge(e.target.value)}/>
           </label>
           <label>
           <input type="text" placeholder="Loves" onChange={(e) => setLoves(e.target.value)}/>
@@ -98,13 +100,13 @@ export default function Gallery() {
           multiple={false}
           onDone={({base64}) => setImg(base64)}
           />
-          <input type="submit" value="Skicka in"/>
+          <input type="submit" value="Submit"/>
           </fieldset>
       </form>
  
              { showInfo ? <ShowMoreInfo allInfo={allInfo} showInfo={setShowInfo} /> : null }
              <div className="center-gallery">
-      {hamsters?.map((hamster, i) => {
+      {hamsters ? hamsters.map((hamster, i) => {
         return (
           
           <div key={i} >
@@ -116,7 +118,7 @@ export default function Gallery() {
             <button  className="moreInfo-btn"onClick={() => moreInfo(hamster)}>More Info</button>
           </div>
         );
-      })}
+      }):null}
 
 </div>
     </div>
