@@ -58,7 +58,7 @@ export default function Gallery() {
       favFood: favFood,
       imgName: img
     }
-    const response = await fetch(`${baseURL}/hamsters`, {
+    const response = await fetch(`${baseURL}/hamsters/`, {
       method: "POST",
       body: JSON.stringify(hamster),
       headers: {"Content-Type": "application/json"}
