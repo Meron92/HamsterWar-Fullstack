@@ -29,7 +29,7 @@ export default function Gallery() {
  }
 
   function hamster() {
-    fetch(`${baseURL}/hamsters/`)
+    fetch(`${baseURL}/hamsters`)
       .then((response) => response.json())
       .then((data) => setHamsters(data));
   }
@@ -67,6 +67,7 @@ export default function Gallery() {
    setHamsters([...hamsters, data])
    console.log(data);
   }
+  
   useEffect(() => {
     hamster();
   }, []);
@@ -103,13 +104,13 @@ export default function Gallery() {
  
              { showInfo ? <ShowMoreInfo allInfo={allInfo} showInfo={setShowInfo} /> : null }
              <div className="center-gallery">
-      {hamsters.map((hamster, i) => {
+      {hamsters?.map((hamster, i) => {
         return (
           
           <div key={i} >
            <div className="flex-gallery">
             <h1> {hamster.name}</h1>
-            <img    src={hamster.imgName} alt="hamster"  />
+            <img src={hamster.imgName} alt="hamster"  />
             </div>
             <button className="delete-btn" onClick={() => deleteHamster(hamster._id)}>Delete</button>
             <button  className="moreInfo-btn"onClick={() => moreInfo(hamster)}>More Info</button>
