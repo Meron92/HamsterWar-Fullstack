@@ -29,7 +29,7 @@ export default function Gallery() {
  }
 
   function hamster() {
-    fetch(`http://localhost:5001/hamsters`)
+    fetch(`${baseURL}/hamsters/`)
       .then((response) => response.json())
       .then((data) => setHamsters(data));
   }
@@ -38,7 +38,7 @@ export default function Gallery() {
 
   async function deleteHamster(id) {
     const response = await fetch(
-      "http://localhost:5001/hamsters/delete/" + id,
+      `${baseURL}/hamsters/delete/` + id,
       {
         method: "DELETE",
       }
@@ -59,7 +59,7 @@ export default function Gallery() {
       favFood: favFood,
       imgName: img
     }
-    const response = await fetch("http://localhost:5001/hamsters", {
+    const response = await fetch(`${baseURL}/hamsters`, {
       method: "POST",
       body: JSON.stringify(hamster),
       headers: {"Content-Type": "application/json"}

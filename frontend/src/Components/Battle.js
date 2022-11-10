@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {Link} from "react-router-dom"
 import Result from "./Result"
+import { baseURL } from "../Utils/baseURL";
 
 export default function Battle() {
   const [randomHamsters, setRandomHamsters] = useState([]);
@@ -12,7 +13,7 @@ export default function Battle() {
 
 
   function match() {
-    fetch("http://localhost:5001/hamsters/random")
+    fetch(`${baseURL}/hamsters/random`)
       .then((response) => response.json())
       .then((data) => setRandomHamsters(data));
   }
@@ -20,7 +21,7 @@ export default function Battle() {
 
   async function getWinner(winner) {
 
-    await fetch("http://localhost:5001/hamsters/" + winner._id,
+    await fetch(`${baseURL}/hamsters/` + winner._id,
     {
       method: "PUT",
       body:JSON.stringify({
@@ -36,7 +37,7 @@ export default function Battle() {
 
   async function getLoser(loser) {
 
-   await fetch("http://localhost:5001/hamsters/" + loser._id,
+   await fetch(`${baseURL}/hamsters/` + loser._id,
    {
      method: "PUT",
      body:JSON.stringify({
