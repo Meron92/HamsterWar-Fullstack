@@ -1,0 +1,118 @@
+/*Combined Css*/
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: sandybrown;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+p {
+  font-size: large;
+  font-weight: bolder;
+  font-style: italic;
+}
+
+.welcome ,p,.Btn-center,.center-gallery,.gallery-h1 {
+  text-align: center;
+}
+
+.btn-play, .btn-gallery,.btn-cute,.delete-btn,.btn-newGame,.moreInfo-btn{
+  width: 96px;
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 5px;
+  font-size: larger;
+}
+
+img {
+width: 200px;
+height: 200px;
+display: block;
+margin: auto;
+}
+
+/*Gallery css*/
+.center-gallery {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+.flex-gallery {
+  flex-flow: row;
+  margin: 30px;
+}
+
+.gallery-field {
+  display: flex;
+  justify-content:center;
+  width: fit-content;
+  margin: auto;
+}
+
+.gallery-field:first-child {
+  margin: 5px;
+}
+
+.btn-play:hover {
+  background-color: rgb(0, 225,127);
+  color: rgb(127,0,225);
+  font-weight: bolder;
+}
+
+.btn-gallery:hover {
+  background-color: rgb(225,127,0);
+  color: rgb(127,0,225);
+  font-weight: bolder;
+}
+
+legend {
+  font-weight: bolder;
+}
+
+
+/* Showmoreinfo css*/
+.moreInfoContainer {
+  border: 1px solid black;
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  background-color: #61dafb;
+}
+
+
+/* Battle css*/
+.battle-container {
+  display: flex;
+  justify-content: center;
+}
+
+.battle-flex {
+  margin: 50px;
+}
+
+
+/* Result Css*/
+.result-flex {
+border: 1px solid black;
+}
+
+.result-win,.result-lose {
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  width: fit-content;
+  margin: 5px auto;
+  padding: 5px;
+  flex-flow: column;
+}
+
+.result-win {
+  background-color: lightgreen;
+}
+
+.result-lose {
+  background-color: lightcoral;
+}
