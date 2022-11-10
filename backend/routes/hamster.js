@@ -48,8 +48,12 @@ hamsterRoutes.route("/hamsters").post(function (req, response) {
     games: 0,
   };
   db_connect.collection("Hamsters").insertOne(newHamster, function (err) {
-    if (err) throw err;
-    response.json(newHamster);
+    if (err) {
+      response.status(404).json(err)
+    } else {
+      response.status(200).json(newHamster)
+      
+    }
   });
 });
 
