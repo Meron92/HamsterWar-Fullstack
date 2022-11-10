@@ -33,8 +33,7 @@ export default function Gallery() {
       .then((response) => response.json())
       .then((data) => setHamsters(data));
   }
-  let randomHamsters = hamsters[Math.floor(Math.random() * hamsters.length)];
-  console.log(randomHamsters);
+
 
   async function deleteHamster(id) {
     const response = await fetch(
@@ -66,6 +65,7 @@ export default function Gallery() {
     });
     const data = await response.json();
    setHamsters([...hamsters, data])
+   console.log(data);
   }
   useEffect(() => {
     hamster();
