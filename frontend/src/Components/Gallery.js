@@ -66,14 +66,9 @@ export default function Gallery() {
     const data = await response.json();
     console.log(data);
    setHamsters([...hamsters, data])
-   handleClick();
-   refresh()
+   window.location.reload()
   }
-  const handleClick = () => {  setName('');}
   
-  function refresh() {
-    window.location.reload()
-  }
 
   useEffect(() => {
     hamster();
