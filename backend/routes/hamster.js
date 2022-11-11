@@ -1,12 +1,12 @@
 const express = require("express");
 const hamsterRoutes = express.Router();
-// connect to db
+// connect till db
 const dbo = require("../db/connect");
-// Detta hjälper att konvertera vårt id från en
+// Detta hjälper att konvertera id från en
 // sträng till ett objekt-id (_id)
 const ObjectId = require("mongodb").ObjectId;
 
-// här skall vi få en lista över våra hamstarar
+// Här får man en lista på alla hamstarar
 hamsterRoutes.route("/hamsters").get(function (req, res) {
   let db_connect = dbo.getDb("HamstersDb");
   db_connect
@@ -18,7 +18,7 @@ hamsterRoutes.route("/hamsters").get(function (req, res) {
     });
 });
 
-// Här skall vi få enbart en hamster via id
+// Här får man enbart en hamster via id
 hamsterRoutes.route("/hamster/:id").get(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = {
@@ -33,7 +33,7 @@ hamsterRoutes.route("/hamster/:id").get(function (req, res) {
 
 });
 
-// Här skall vi skapa en ny hamster
+// Här skapap man en ny hamster
 hamsterRoutes.route("/hamsters").post(function (req, response) {
   let db_connect = dbo.getDb();
   let newHamster = {
@@ -57,7 +57,7 @@ hamsterRoutes.route("/hamsters").post(function (req, response) {
   });
 });
 
-// Här skall vi uppdatera vår hamster poänglista via id
+// Här man uppdatera hamsterns poänglista via id
 hamsterRoutes.route("/hamsters/:id").put(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = {
@@ -79,7 +79,7 @@ hamsterRoutes.route("/hamsters/:id").put(function (req, res) {
     });
 });
 
-// Här skall vi ta bort en hamster via id
+// Här tar man bort en hamster via id
 hamsterRoutes.route("/hamsters/delete/:id").delete(function (req, res) {
   let db_connect = dbo.getDb();
   let myquery = {

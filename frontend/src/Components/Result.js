@@ -2,12 +2,10 @@ import React from 'react'
 
 export default function Result({hamsterWinner, hamsterLoser}) {
  
-
-
-
   function Start() {
     window.location.reload()
   }
+  // Retunerar vinnaren och förloraren från varje battle
   return (
     <div className='result-flex'>
         {

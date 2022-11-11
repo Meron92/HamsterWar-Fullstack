@@ -11,7 +11,7 @@ export default function Battle() {
 
 
 
-
+//Hämtar två slumpade hamstrar 
   function match() {
     fetch(`${baseURL}/hamsters/random`)
       .then((response) => response.json())
@@ -19,8 +19,8 @@ export default function Battle() {
   }
   console.log(randomHamsters);
 
+  //Uppdatater hamstern som vinner en battle
   async function getWinner(winner) {
-
     await fetch(`${baseURL}/hamsters/` + winner._id,
     {
       method: "PUT",
@@ -34,9 +34,8 @@ export default function Battle() {
     setWinner({...winner }, winner.wins = winner.wins + 1)
   }
 
-
+//Uppdaterar hamstern som förlorar en battle
   async function getLoser(loser) {
-
    await fetch(`${baseURL}/hamsters/` + loser._id,
    {
      method: "PUT",
@@ -50,7 +49,7 @@ export default function Battle() {
   setLoser({...loser}, loser.defeats = loser.defeats + 1)
   }
 
-
+//Uppdataras via knappen onClicken "Cutest"
    async function handleCuteClick(x,y) {
     await getWinner(x)
     await getLoser(y)

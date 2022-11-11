@@ -15,9 +15,7 @@ export default function Gallery() {
   const [allInfo, setAllInfo] = useState([])
  const [showInfo, setShowInfo] = useState(false)
 
-
-
-
+// Hämtar info om hamstern med hjälp av id
   async function moreInfo(id) {
     const response = await fetch(`${baseURL}/hamster` + id._id,
    {
@@ -28,6 +26,7 @@ export default function Gallery() {
  setShowInfo(true)
  }
 
+ //Hämtar alla hamstrar från databasen
   function hamster() {
     fetch(`${baseURL}/hamsters`)
       .then((response) => response.json())
@@ -48,8 +47,7 @@ export default function Gallery() {
     );
   }
 
-  
-
+  //Lägger till en ny hamster
   async function addHamster() {
     let hamster = {
       name: name,
@@ -104,7 +102,7 @@ export default function Gallery() {
           </fieldset>
       </form>
  
-             { showInfo ? <ShowMoreInfo allInfo={allInfo} showInfo={setShowInfo} /> : null }
+             { showInfo ? <ShowMoreInfo allInfo={allInfo}  /> : null }
              <div className="center-gallery">
       {hamsters ? hamsters.map((hamster, i) => {
         return (
@@ -116,10 +114,10 @@ export default function Gallery() {
             </div>
             <button className="delete-btn" onClick={() => deleteHamster(hamster._id)}>Delete</button>
             <button  className="moreInfo-btn"onClick={() => moreInfo(hamster)}>More Info</button>
+            
           </div>
         );
       }):null}
-
 </div>
     </div>
   );
